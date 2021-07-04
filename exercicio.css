@@ -5,9 +5,9 @@
 }
 
 #controles ul:hover {
+  transition-duration: 1000ms;
   transform: translateX(0);
 }
-
 /* Exercício 1: Criar uma transição para quando o mouse estiver em cima dos
  * botões play/stop (para que o elemento se revele lentamente)
  */
@@ -23,18 +23,48 @@
  *   - com-raiva: animal fica pulsando
  *   - atacando: animal dá um salto e cresce, com uma borda vermelha
  */
-.com-fome {
 
+@keyframes variando {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.com-fome {
+  animation: variando 5s ease-in-out 0s infinite alternate;
+}
+
+@keyframes rodando {
+  from {
+    transform: rotate(15deg);
+  }
+  to {
+    transform: rotate(-15deg);
+  }
 }
 
 .satisfeito {
-
+  border-color: greenyellow;
+  transition: color 600ms linear;
+  animation: rodando 0.5s ease-in-out 0s infinite alternate;
+}
+@keyframes pulsando {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .com-raiva {
-
+  border-color: red;
+  animation: pulsando 0.1s ease-in-out 0s infinite alternate;
 }
 
 .atacando {
-
+  border: red;
+  animation: rodando 0.1s ease-in-out 0s infinite alternate, variando 0.1s ease-in-out 0s infinite alternate;
 }
